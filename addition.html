@@ -104,7 +104,7 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 
 /* ── QUIZ ── */
 .quiz{background:white;border:2px solid #E2E8F0;border-radius:24px;padding:40px;box-shadow:0 4px 24px rgba(37,99,235,0.08);}
-.quiz-top{display:flex;justify-content:space-between;margin-bottom:24px;}
+.quiz-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:10px;flex-wrap:wrap;}
 .badge{background:#EFF6FF;color:#2563EB;font-size:14px;font-weight:800;padding:6px 16px;border-radius:50px;}
 .quiz-q{font-size:52px;font-weight:900;color:#2563EB;text-align:center;margin-bottom:28px;direction:ltr;}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
@@ -183,6 +183,16 @@ footer p{font-size:13px;}
 }
 @media(max-width:640px){
   .opts{grid-template-columns:1fr;}}
+/* ===== VOICE SYSTEM STYLES ===== */
+.voice-toggle-wrap{display:flex;align-items:center;gap:10px;}
+.voice-btn{display:flex;align-items:center;gap:8px;padding:8px 16px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;border:2.5px solid #DDD6FE;border-radius:50px;background:white;color:#64748B;cursor:pointer;transition:all 0.25s;white-space:nowrap;user-select:none;}
+.voice-btn .v-icon{font-size:18px;transition:transform 0.2s;}
+.voice-btn.active{background:#F5F3FF;color:#7C3AED;border-color:#7C3AED;box-shadow:0 0 0 3px rgba(124,58,237,0.15);}
+.voice-btn.active .v-icon{transform:scale(1.2);}
+.voice-btn:hover{border-color:#7C3AED;color:#7C3AED;background:#F5F3FF;}
+.voice-btn.speaking{animation:voicePulse 0.8s ease-in-out infinite;}
+@keyframes voicePulse{0%,100%{box-shadow:0 0 0 3px rgba(124,58,237,0.15);}50%{box-shadow:0 0 0 8px rgba(124,58,237,0.25);}}
+/* ============================= */
 </style>
 </head>
 <body>
@@ -272,6 +282,12 @@ footer p{font-size:13px;}
     <div class="quiz-top">
       <span class="badge">⭐ النقاط: <strong id="Q_score">0</strong></span>
       <span class="badge">السؤال <strong id="Q_num">1</strong> / 10</span>
+      <div class="voice-toggle-wrap">
+        <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="تفعيل/إيقاف الصوت بالعربية">
+          <span class="v-icon">🔇</span>
+          <span class="v-label">الصوت</span>
+        </button>
+      </div>
     </div>
     <div class="quiz-q" id="Q_q">؟ + ؟ = ؟</div>
     <div class="opts" id="Q_opts"></div>
@@ -291,6 +307,70 @@ footer p{font-size:13px;}
 </footer>
 
 <script>
+/* ============================================================
+   VOICE SYSTEM (Web Speech API – Arabic)
+   ============================================================ */
+const Voice = (function(){
+  const supported = 'speechSynthesis' in window;
+  let enabled = false;
+  let speaking = false;
+  const numWords = {
+    0:'صفر',1:'واحد',2:'اثنان',3:'ثلاثة',4:'أربعة',5:'خمسة',
+    6:'ستة',7:'سبعة',8:'ثمانية',9:'تسعة',10:'عشرة',
+    11:'أحد عشر',12:'اثنا عشر',13:'ثلاثة عشر',14:'أربعة عشر',
+    15:'خمسة عشر',16:'ستة عشر',17:'سبعة عشر',18:'ثمانية عشر',
+    19:'تسعة عشر',20:'عشرون',21:'واحد وعشرون',22:'اثنان وعشرون',
+    23:'ثلاثة وعشرون',24:'أربعة وعشرون',25:'خمسة وعشرون',
+    26:'ستة وعشرون',27:'سبعة وعشرون',28:'ثمانية وعشرون',
+    29:'تسعة وعشرون',30:'ثلاثون',31:'واحد وثلاثون',
+    32:'اثنان وثلاثون',33:'ثلاثة وثلاثون',34:'أربعة وثلاثون',
+    35:'خمسة وثلاثون',36:'ستة وثلاثون',37:'سبعة وثلاثون',
+    38:'ثمانية وثلاثون',39:'تسعة وثلاثون',40:'أربعون'
+  };
+  function numToAr(n){ return numWords[n]!==undefined ? numWords[n] : String(n); }
+  function pickVoice(){
+    if(!supported) return null;
+    const voices=window.speechSynthesis.getVoices();
+    let v=voices.find(v=>v.lang==='ar-SA'||v.lang==='ar-EG'||v.lang.startsWith('ar'));
+    if(!v) v=voices[0]||null;
+    return v;
+  }
+  function speak(text){
+    if(!supported||!enabled) return;
+    window.speechSynthesis.cancel();
+    const utt=new SpeechSynthesisUtterance(text);
+    utt.lang='ar-SA'; utt.rate=0.85; utt.pitch=1.1;
+    const v=pickVoice(); if(v) utt.voice=v;
+    utt.onstart=()=>{ speaking=true; _updateBtn(); };
+    utt.onend=()=>{ speaking=false; _updateBtn(); };
+    utt.onerror=()=>{ speaking=false; _updateBtn(); };
+    window.speechSynthesis.speak(utt);
+  }
+  function _updateBtn(){
+    const btn=document.getElementById('voiceBtn');
+    if(!btn) return;
+    const icon=btn.querySelector('.v-icon');
+    if(enabled){
+      btn.classList.add('active');
+      icon.textContent=speaking?'🔊':'🔈';
+      if(speaking) btn.classList.add('speaking');
+      else btn.classList.remove('speaking');
+    } else {
+      btn.classList.remove('active','speaking');
+      icon.textContent='🔇';
+    }
+  }
+  function toggle(){
+    if(!supported){ alert('المتصفح لا يدعم تقنية القراءة الصوتية.'); return; }
+    enabled=!enabled;
+    window.speechSynthesis.cancel();
+    speaking=false;
+    _updateBtn();
+  }
+  return { speak, toggle, numToAr, isEnabled:()=>enabled };
+})();
+function toggleVoice(){ Voice.toggle(); }
+if('speechSynthesis' in window){ window.speechSynthesis.onvoiceschanged=()=>{}; }
 
 /* ================================================================
    LOGO — stored as base64 in sessionStorage or loaded once
@@ -578,6 +658,7 @@ var Q = (function() {
     var b = rnd(1, 20);
     var cor = a + b;
     document.getElementById('Q_q').textContent = a + ' + ' + b + ' = ?';
+    Voice.speak('كم يساوي ' + Voice.numToAr(a) + ' زائد ' + Voice.numToAr(b) + '؟');
 
     var opts = [cor];
     var tries = 0;
@@ -605,11 +686,13 @@ var Q = (function() {
           document.getElementById('Q_score').textContent = score;
           document.getElementById('Q_fb').textContent = '🎉 أحسنت! إجابة صحيحة!';
           document.getElementById('Q_fb').className = 'fb ok';
+          Voice.speak('ممتاز! ' + Voice.numToAr(a) + ' زائد ' + Voice.numToAr(b) + ' يساوي ' + Voice.numToAr(cor) + '. إجابة صحيحة!');
         } else {
           btn.classList.add('wrong');
           allBtns.forEach(function(b){ if (parseInt(b.textContent) === cor) b.classList.add('right'); });
           document.getElementById('Q_fb').textContent = '❌ الإجابة الصحيحة هي ' + cor;
           document.getElementById('Q_fb').className = 'fb err';
+          Voice.speak('إجابة خاطئة. ' + Voice.numToAr(a) + ' زائد ' + Voice.numToAr(b) + ' يساوي ' + Voice.numToAr(cor));
         }
         document.getElementById('Q_next').style.display = 'block';
       });
@@ -622,6 +705,7 @@ var Q = (function() {
     document.getElementById('Q_opts').innerHTML = '';
     document.getElementById('Q_fb').textContent = 'حصلت على ' + score + ' نقطة من ١٠';
     document.getElementById('Q_fb').className = 'fb ok';
+    Voice.speak('أحسنت! لقد أنهيت التمارين. حصلت على ' + Voice.numToAr(score) + ' نقاط من عشرة.');
     var btn = document.getElementById('Q_next');
     btn.textContent = 'إعادة التمرين ↺';
     btn.style.display = 'block';
