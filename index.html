@@ -98,20 +98,19 @@ footer p{font-size:13px;}
   }
 
 }
-.hero{background:white;padding:60px 24px 60px;overflow:hidden;position:relative;min-height:540px;display:flex;align-items:center;}
-.hero::before{display:none;}
-.hero-star{display:none;}
+.hero{background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 55%,#3B82F6 100%);padding:60px 24px 60px;overflow:hidden;position:relative;min-height:540px;display:flex;align-items:center;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 10% 20%,rgba(251,191,36,0.15) 0%,transparent 40%),radial-gradient(circle at 90% 80%,rgba(16,185,129,0.12) 0%,transparent 40%);}
 .hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;}
 .hero-text{padding-bottom:0;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#EFF6FF;border:1.5px solid #BFDBFE;color:#2563EB;font-size:14px;font-weight:700;padding:7px 18px;border-radius:50px;margin-bottom:24px;}
-.hero h1{font-size:clamp(38px,5.5vw,68px);font-weight:900;color:#1E293B;line-height:1.15;margin-bottom:18px;}
-.hero h1 em{font-style:normal;color:#2563EB;}
-.hero p{font-size:clamp(16px,2vw,20px);color:#475569;max-width:520px;margin-bottom:32px;line-height:1.7;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.35);color:white;font-size:14px;font-weight:700;padding:7px 18px;border-radius:50px;margin-bottom:24px;backdrop-filter:blur(6px);}
+.hero h1{font-size:clamp(38px,5.5vw,68px);font-weight:900;color:white;line-height:1.15;margin-bottom:18px;}
+.hero h1 em{font-style:normal;color:#FBBF24;}
+.hero p{font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,0.88);max-width:520px;margin-bottom:32px;line-height:1.7;}
 .hero-illo img{width:100%;max-width:420px;border-radius:16px;display:block;}
 .hero-cta{display:inline-flex;align-items:center;gap:10px;background:#FBBF24;color:#1E293B;font-size:18px;font-weight:900;padding:16px 34px;border-radius:50px;text-decoration:none;box-shadow:0 8px 28px rgba(251,191,36,0.5);transition:all 0.25s;}
 .hero-cta:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(251,191,36,0.6);}
 .hero-bubbles{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;}
-.h-bubble{width:50px;height:50px;border-radius:50%;background:#EFF6FF;border:2px solid #BFDBFE;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#2563EB;animation:floatUp 3s ease-in-out infinite;}
+.h-bubble{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.18);border:2px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:white;animation:floatUp 3s ease-in-out infinite;}
 .h-bubble:nth-child(2){animation-delay:.4s}.h-bubble:nth-child(3){animation-delay:.8s}.h-bubble:nth-child(4){animation-delay:1.2s}.h-bubble:nth-child(5){animation-delay:1.6s}
 @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .pencils-banner{background:white;border-bottom:2px solid #E2E8F0;padding:14px 0;overflow:hidden;}
@@ -175,7 +174,7 @@ footer p{font-size:13px;}
       <a href="#sections" class="hero-cta">🚀 ابدأ الرحلة الآن</a>
       <div class="hero-bubbles"><div class="h-bubble">١</div><div class="h-bubble">٢</div><div class="h-bubble">٣</div><div class="h-bubble">٤</div><div class="h-bubble">٥</div></div>
     </div>
-    <div class="hero-illo"><img src="preview.jpg" alt="رحلة الأرقام"></div>
+    <div class="hero-illo"><img src="preview.png" alt="رحلة الأرقام"></div>
   </div>
 </section>
 <div class="pencils-banner"><div class="pencils-track">
