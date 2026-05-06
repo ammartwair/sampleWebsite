@@ -31,9 +31,9 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 .intro h2{font-size:22px;font-weight:900;color:#2563EB;margin-bottom:10px;}
 .intro p{font-size:15px;color:#64748B;line-height:1.8;}
 .examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
-.ex{background:white;border:2px solid #BFDBFE;border-radius:18px;padding:24px 18px;text-align:center;transition:all 0.25s;}
+.ex{direction: ltr;background:white;border:2px solid #BFDBFE;border-radius:18px;padding:24px 18px;text-align:center;transition:all 0.25s;}
 .ex:hover{transform:translateY(-4px);border-color:#2563EB;box-shadow:0 12px 32px rgba(37,99,235,0.14);}
-.ex .vis{font-size:24px;margin-bottom:10px;}
+.ex .vis{font-size:18px;line-height:1.9;margin-bottom:10px;overflow:hidden;word-break:break-all;}
 .ex .eq{font-size:28px;font-weight:900;color:#2563EB;margin-bottom:6px;direction:ltr;}
 .ex .lb{font-size:13px;color:#64748B;font-weight:600;}
 
@@ -231,17 +231,15 @@ footer p{font-size:13px;}
     <div class="intro-icon">➕</div>
     <div>
       <h2>ما هو الجمع؟</h2>
-      <p>الجمع هو إضافة عددين أو أكثر معاً للحصول على مجموعهما. نستخدم علامة <strong>( + )</strong>. مثلاً إذا كان لديك ٣ تفاحات وأضفت إليها ٢، فستحصل على ٥ تفاحات!</p>
+      <p>الجمع هو إضافة عددين أو أكثر معاً للحصول على مجموعهما. نستخدم علامة <strong>( + )</strong>. مثلاً إذا كان لديك 3 تفاحات وأضفت إليها 2، فستحصل على 5 تفاحات!</p>
     </div>
   </div>
 
   <!-- EXAMPLES -->
   <h3 class="sh">أمثلة على الجمع</h3>
   <div class="examples">
-    <div class="ex"><div class="vis">🍎🍎 + 🍎🍎🍎</div><div class="eq">2 + 3 = 5</div><div class="lb">تفاحتان وثلاث تفاحات</div></div>
-    <div class="ex"><div class="vis">⭐⭐⭐ + ⭐⭐⭐⭐</div><div class="eq">3 + 4 = 7</div><div class="lb">ثلاث نجوم وأربع نجوم</div></div>
-    <div class="ex"><div class="vis">🎈🎈🎈🎈🎈 + 🎈🎈🎈🎈🎈</div><div class="eq">5 + 5 = 10</div><div class="lb">خمسة بالونات وخمسة</div></div>
-    <div class="ex"><div class="vis">🐟🐟🐟🐟🐟🐟 + 🐟🐟🐟🐟</div><div class="eq">6 + 4 = 10</div><div class="lb">ست سمكات وأربع</div></div>
+    <div class="ex"><div class="vis">🍎🍎🍎🍎 + 🍎🍎🍎 <br>= <br>🍎🍎🍎🍎<br>🍎🍎🍎</div><div class="eq">4 + 3 = 7</div><div class="lb">أربع تفاحات أضفنا إليها ثلاثاً أصبحت سبع تفاحات</div></div>
+    <div class="ex"><div class="vis">🎈🎈🎈🎈🎈 + 🎈🎈🎈🎈<br>= <br>🎈🎈🎈🎈🎈<br>🎈🎈🎈🎈</div><div class="eq">5 + 4 = 9</div><div class="lb">خمسة بالونات أضفنا أربعة أصبحت تسعة بالونات</div></div>
   </div>
 
   <!-- BALLOON GAME -->
@@ -255,9 +253,9 @@ footer p{font-size:13px;}
       </div>
     </div>
     <div class="lvl-tabs">
-      <div class="lvl-tab on" onclick="G.setLv(1,this)">🟢 مبتدئ (١-١٠)</div>
-      <div class="lvl-tab" onclick="G.setLv(2,this)">🟡 متوسط (١-٢٠)</div>
-      <div class="lvl-tab" onclick="G.setLv(3,this)">🔴 متقدم (١-٥٠)</div>
+      <div class="lvl-tab on" onclick="G.setLv(1,this)">🟢 مبتدئ (1-10)</div>
+      <div class="lvl-tab" onclick="G.setLv(2,this)">🟡 متوسط (1-20)</div>
+      <div class="lvl-tab" onclick="G.setLv(3,this)">🔴 متقدم (1-50)</div>
     </div>
     <div class="q-box">
       <div class="q-hint">فرقع البالون الذي يحمل الإجابة الصحيحة!</div>
@@ -703,7 +701,7 @@ var Q = (function() {
   function finish() {
     document.getElementById('Q_q').textContent = '🏆 انتهت التمارين!';
     document.getElementById('Q_opts').innerHTML = '';
-    document.getElementById('Q_fb').textContent = 'حصلت على ' + score + ' نقطة من ١٠';
+    document.getElementById('Q_fb').textContent = 'حصلت على ' + score + ' نقطة من 10';
     document.getElementById('Q_fb').className = 'fb ok';
     Voice.speak('أحسنت! لقد أنهيت التمارين. حصلت على ' + Voice.numToAr(score) + ' نقاط من عشرة.');
     var btn = document.getElementById('Q_next');

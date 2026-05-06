@@ -100,10 +100,10 @@ footer p{font-size:13px;}
 .ii{font-size:52px;flex-shrink:0;}
 .ib h2{font-size:22px;font-weight:900;color:#D97706;margin-bottom:10px;}
 .ib p{font-size:15px;color:var(--muted);line-height:1.8;}
-.exg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
+.exg{direction:ltr;grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
 .ec{background:white;border:2px solid #FCD34D;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,0.05);transition:all 0.25s;}
 .ec:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12);border-color:#D97706;}
-.ec .vis{font-size:26px;margin-bottom:10px;}
+.ec .vis{font-size:18px;line-height:1.9;margin-bottom:10px;overflow:hidden;word-break:break-all;}
 .ec .eq{font-size:28px;font-weight:900;color:#D97706;margin-bottom:6px;direction:ltr;}
 .ec .lb{font-size:13px;color:var(--muted);font-weight:600;}
 .qb{background:white;border:2px solid var(--border);border-radius:24px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.07);}
@@ -143,21 +143,24 @@ footer p{font-size:13px;}
 <div class="page-hero" style="--hero-grad:linear-gradient(135deg,#92400E,#D97706)">
   <div class="hs" style="top:15%;left:10%">⭐</div><div class="hs" style="top:10%;right:25%;animation-delay:.8s">🌟</div>
   <div class="phc"><div class="pht"><h1>➗ القسمة</h1>
-  <p>القسمة هي توزيع عدد من الأشياء بالتساوي على مجموعات. نستخدم علامة ( ÷ ). مثلاً ١٢ ÷ ٣ تعني تقسيم ١٢ إلى ٣ مجموعات متساوية، فيكون في كل مجموعة ٤.</p>
+  <p>القسمة هي توزيع عدد من الأشياء بالتساوي على مجموعات. نستخدم علامة ( ÷ ). مثلاً 12 ÷ 3 تعني تقسيم 12 إلى 3 مجموعات متساوية، فيكون في كل مجموعة 4.</p>
 </div></div>
 </div>
 <div class="container">
-  <div class="ib"><div class="ii">➗</div><div><h2>ما هي القسمة؟</h2><p>القسمة هي توزيع عدد من الأشياء بالتساوي على مجموعات. نستخدم علامة ( ÷ ). مثلاً ١٢ حلوى على ٣ أصدقاء = ٤ حلوى لكل واحد!</p></div></div>
+  <div class="ib"><div class="ii">➗</div><div><h2>ما هي القسمة؟</h2><p>القسمة هي توزيع عدد من الأشياء بالتساوي على مجموعات. نستخدم علامة ( ÷ ). مثلاً 12 حلوى على 3 أصدقاء = 4 حلوى لكل واحد!</p></div></div>
   <h3 class="sh">أمثلة على القسمة</h3>
-  <div class="exg"><div class="ec"><div class="vis">🍪🍪🍪🍪🍪🍪🍪🍪</div><div class="eq">8 ÷ 2 = 4</div><div class="lb">ثمانية بسكويت على طفلين</div></div><div class="ec"><div class="vis">⚽⚽⚽⚽⚽⚽⚽⚽⚽</div><div class="eq">9 ÷ 3 = 3</div><div class="lb">تسعة كرات على ثلاثة لاعبين</div></div><div class="ec"><div class="vis">🎁🎁🎁🎁🎁🎁🎁🎁🎁🎁</div><div class="eq">10 ÷ 5 = 2</div><div class="lb">عشرة هدايا على خمسة أطفال</div></div><div class="ec"><div class="vis">🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸</div><div class="eq">12 ÷ 4 = 3</div><div class="lb">اثنا عشر زهرة في أربعة أطباق</div></div></div>
+  <div class="exg">
+    <div class="ec"><div class="vis">🍪🍪🍪🍪🍪🍪🍪🍪<br>÷ 👦👦👦👦<br>= <br>🍪🍪</div><div class="eq">8 ÷ 4 = 2</div><div class="lb">ثماني بسكويت وزّعناها على أربعة أطفال لكل طفل بسكويتتان</div></div>
+    <div class="ec"><div class="vis">🌟🌟🌟🌟🌟🌟🌟🌟🌟<br>÷ 📦📦📦<br>= <br>🌟🌟🌟</div><div class="eq">9 ÷ 3 = 3</div><div class="lb">تسعة نجوم وضعناها في ثلاثة صناديق في كل صندوق ثلاثة نجوم</div></div>
+  </div>
   
 <h3 class="sh">مثال مرئي 👁️</h3>
 <div style="background:white;border:2px solid #FCD34D;border-radius:20px;padding:32px;margin-bottom:40px;text-align:center;">
-  <h3 style="font-size:17px;font-weight:900;margin-bottom:20px;">١٢ ÷ ٣ = ٤ — نوزّع ١٢ تفاحة على ٣ مجموعات</h3>
+  <h3 style="font-size:17px;font-weight:900;margin-bottom:20px;">12 ÷ 3 = 4 — نوزّع 12 تفاحة على 3 مجموعات</h3>
   <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
-    <div style="background:#FEF3C7;border:2px dashed #FCD34D;border-radius:14px;padding:14px 18px;text-align:center;">🍎🍎🍎🍎<div style="font-size:12px;font-weight:700;color:#D97706;margin-top:8px;">المجموعة ١</div></div>
-    <div style="background:#FEF3C7;border:2px dashed #FCD34D;border-radius:14px;padding:14px 18px;text-align:center;">🍎🍎🍎🍎<div style="font-size:12px;font-weight:700;color:#D97706;margin-top:8px;">المجموعة ٢</div></div>
-    <div style="background:#FEF3C7;border:2px dashed #FCD34D;border-radius:14px;padding:14px 18px;text-align:center;">🍎🍎🍎🍎<div style="font-size:12px;font-weight:700;color:#D97706;margin-top:8px;">المجموعة ٣</div></div>
+    <div style="background:#FEF3C7;border:2px dashed #FCD34D;border-radius:14px;padding:14px 18px;text-align:center;">🍎🍎🍎🍎<div style="font-size:12px;font-weight:700;color:#D97706;margin-top:8px;">المجموعة 1</div></div>
+    <div style="background:#FEF3C7;border:2px dashed #FCD34D;border-radius:14px;padding:14px 18px;text-align:center;">🍎🍎🍎🍎<div style="font-size:12px;font-weight:700;color:#D97706;margin-top:8px;">المجموعة 2</div></div>
+    <div style="background:#FEF3C7;border:2px dashed #FCD34D;border-radius:14px;padding:14px 18px;text-align:center;">🍎🍎🍎🍎<div style="font-size:12px;font-weight:700;color:#D97706;margin-top:8px;">المجموعة 3</div></div>
   </div>
   <div style="font-size:36px;font-weight:900;color:#D97706;direction:ltr;">12 ÷ 3 = 4</div>
 </div>
@@ -250,7 +253,7 @@ function generate(){
   const opts=new Set([correct]);while(opts.size<4){opts.add(rand(Math.max(1,correct-5),correct+5));}render(opts,correct);}
 function render(opts,correct){const c=document.getElementById('options');c.innerHTML='';[...opts].sort(()=>Math.random()-.5).forEach(val=>{const btn=document.createElement('button');btn.className='quiz-btn';btn.textContent=val;btn.onclick=()=>{if(answered)return;answered=true;if(val===correct){btn.classList.add('correct');score++;document.getElementById('score').textContent=score;document.getElementById('feedback').textContent='🎉 أحسنت!';document.getElementById('feedback').className='qf good';Voice.speak('ممتاز! '+Voice.numToAr(currentDividend)+' على '+Voice.numToAr(currentDivisor)+' يساوي '+Voice.numToAr(correct)+'. إجابة صحيحة!');}else{btn.classList.add('wrong');c.querySelectorAll('.quiz-btn').forEach(b=>{if(+b.textContent===correct)b.classList.add('correct');});document.getElementById('feedback').textContent='❌ الإجابة الصحيحة هي '+correct;document.getElementById('feedback').className='qf bad';Voice.speak('إجابة خاطئة. '+Voice.numToAr(currentDividend)+' على '+Voice.numToAr(currentDivisor)+' يساوي '+Voice.numToAr(correct));}document.getElementById('nextBtn').style.display='block';};c.appendChild(btn);});}
 function nextQuestion(){generate();}
-function endQuiz(){document.getElementById('question').textContent='🏆 انتهت التمارين!';document.getElementById('options').innerHTML='';document.getElementById('feedback').textContent='حصلت على '+score+' نقطة من ١٠';document.getElementById('feedback').className='qf good';Voice.speak('أحسنت! لقد أنهيت التمارين. حصلت على '+Voice.numToAr(score)+' نقاط من عشرة.');const btn=document.getElementById('nextBtn');btn.textContent='إعادة التمرين ↺';btn.style.display='block';btn.onclick=()=>{score=0;qnum=0;document.getElementById('score').textContent=0;generate();btn.textContent='السؤال التالي ←';btn.onclick=nextQuestion;};}
+function endQuiz(){document.getElementById('question').textContent='🏆 انتهت التمارين!';document.getElementById('options').innerHTML='';document.getElementById('feedback').textContent='حصلت على '+score+' نقطة من 10';document.getElementById('feedback').className='qf good';Voice.speak('أحسنت! لقد أنهيت التمارين. حصلت على '+Voice.numToAr(score)+' نقاط من عشرة.');const btn=document.getElementById('nextBtn');btn.textContent='إعادة التمرين ↺';btn.style.display='block';btn.onclick=()=>{score=0;qnum=0;document.getElementById('score').textContent=0;generate();btn.textContent='السؤال التالي ←';btn.onclick=nextQuestion;};}
 generate();
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");

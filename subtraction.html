@@ -31,9 +31,9 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 .intro h2{font-size:22px;font-weight:900;color:#10B981;margin-bottom:10px;}
 .intro p{font-size:15px;color:#64748B;line-height:1.8;}
 .examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
-.ex{background:white;border:2px solid #A7F3D0;border-radius:18px;padding:24px 18px;text-align:center;transition:all 0.25s;}
+.ex{background:white;border:2px solid #A7F3D0;border-radius:18px;padding:24px 18px;text-align:center;transition:all 0.25s; direction: ltr;}
 .ex:hover{transform:translateY(-4px);border-color:#10B981;}
-.ex .vis{font-size:24px;margin-bottom:10px;}
+.ex .vis{font-size:18px;line-height:1.9;margin-bottom:10px;overflow:hidden;word-break:break-all;}
 .ex .eq{font-size:28px;font-weight:900;color:#10B981;margin-bottom:6px;direction:ltr;}
 .ex .lb{font-size:13px;color:#64748B;font-weight:600;}
 
@@ -203,16 +203,14 @@ footer p{font-size:13px;}
     <div class="intro-icon">➖</div>
     <div>
       <h2>ما هو الطرح؟</h2>
-      <p>الطرح هو عملية إزالة عدد معين من عدد آخر. نستخدم علامة <strong>( − )</strong>. إذا كان لديك ٨ حبات وأكلت ٣ منها، يتبقى لديك ٥ حبات!</p>
+      <p>الطرح هو عملية إزالة عدد معين من عدد آخر. نستخدم علامة <strong>( − )</strong>. إذا كان لديك 8 حبات وأكلت 3 منها، يتبقى لديك 5 حبات!</p>
     </div>
   </div>
 
   <h3 class="sh">أمثلة على الطرح</h3>
   <div class="examples">
-    <div class="ex"><div class="vis">🍌🍌🍌🍌🍌</div><div class="eq">5 − 2 = 3</div><div class="lb">خمس موزات أكلنا اثنتين</div></div>
-    <div class="ex"><div class="vis">🐦🐦🐦🐦🐦🐦🐦🐦</div><div class="eq">8 − 3 = 5</div><div class="lb">ثمانية طيور طارت ثلاثة</div></div>
-    <div class="ex"><div class="vis">🍭🍭🍭🍭🍭🍭🍭🍭🍭🍭</div><div class="eq">10 − 6 = 4</div><div class="lb">عشرة حلوى أهدينا ستة</div></div>
-    <div class="ex"><div class="vis">🌟🌟🌟🌟🌟🌟🌟🌟🌟</div><div class="eq">9 − 4 = 5</div><div class="lb">تسع نجوم سقطت أربعة</div></div>
+    <div class="ex"><div class="vis">🍌🍌🍌🍌🍌🍌🍌 − 🍌🍌🍌<br>= <br>🍌🍌🍌🍌</div><div class="eq">7 − 3 = 4</div><div class="lb">سبع موزات أكلنا ثلاثاً بقيت أربع موزات</div></div>
+    <div class="ex"><div class="vis">🐦🐦🐦🐦🐦🐦🐦🐦 − 🐦🐦🐦<br>= <br>🐦🐦🐦🐦🐦</div><div class="eq">8 − 3 = 5</div><div class="lb">ثمانية طيور طارت ثلاثة بقيت خمسة طيور</div></div>
   </div>
 
   <!-- STAR CATCHER GAME -->
@@ -226,9 +224,9 @@ footer p{font-size:13px;}
       </div>
     </div>
     <div class="lvl-tabs">
-      <div class="lvl-tab on" onclick="G.setLv(1,this)">🟢 مبتدئ (١-١٠)</div>
-      <div class="lvl-tab" onclick="G.setLv(2,this)">🟡 متوسط (١-٢٠)</div>
-      <div class="lvl-tab" onclick="G.setLv(3,this)">🔴 متقدم (١-٣٠)</div>
+      <div class="lvl-tab on" onclick="G.setLv(1,this)">🟢 مبتدئ (1-10)</div>
+      <div class="lvl-tab" onclick="G.setLv(2,this)">🟡 متوسط (1-20)</div>
+      <div class="lvl-tab" onclick="G.setLv(3,this)">🔴 متقدم (1-30)</div>
     </div>
     <div class="q-box">
       <div class="q-hint">حرّك السلة لتصطاد الإجابة الصحيحة وتتجنّب الخاطئة!</div>
@@ -533,7 +531,7 @@ var G = (function() {
       '<h3>' + msg + '</h3>' +
       '<div class="end-score">' + score + '</div>' +
       '<div class="end-lbl">نقطة</div>' +
-      '<p>وصلت إلى ٥ أخطاء</p>' +
+      '<p>وصلت إلى 5 أخطاء</p>' +
       '<button onclick="G.restart()" style="font-family:Tajawal,sans-serif;font-size:16px;font-weight:900;padding:12px 28px;border-radius:14px;border:none;background:#FBBF24;color:#1E293B;cursor:pointer;margin-top:4px">🔄 العب مجدداً</button>';
     arena.appendChild(ov);
     document.getElementById('G_startBtn').style.display = 'block';
@@ -671,7 +669,7 @@ var Q = (function() {
   function finish() {
     document.getElementById('Q_q').textContent    = '🏆 انتهت التمارين!';
     document.getElementById('Q_opts').innerHTML   = '';
-    document.getElementById('Q_fb').textContent   = 'حصلت على ' + score + ' نقطة من ١٠';
+    document.getElementById('Q_fb').textContent   = 'حصلت على ' + score + ' نقطة من 10';
     document.getElementById('Q_fb').className     = 'fb ok';
     Voice.speak('أحسنت! لقد أنهيت التمارين. حصلت على ' + Voice.numToAr(score) + ' نقاط من عشرة.');
     var btn = document.getElementById('Q_next');

@@ -101,10 +101,10 @@ footer p{font-size:13px;}
 .ii{font-size:52px;flex-shrink:0;}
 .ib h2{font-size:22px;font-weight:900;color:#7C3AED;margin-bottom:10px;}
 .ib p{font-size:15px;color:var(--muted);line-height:1.8;}
-.exg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
+.exg{direction:ltr;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
 .ec{background:white;border:2px solid #DDD6FE;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,0.05);transition:all 0.25s;}
 .ec:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12);border-color:#7C3AED;}
-.ec .vis{font-size:26px;margin-bottom:10px;}
+.ec .vis{font-size:18px;line-height:1.9;margin-bottom:10px;overflow:hidden;word-break:break-all;}
 .ec .eq{font-size:28px;font-weight:900;color:#7C3AED;margin-bottom:6px;direction:ltr;}
 .ec .lb{font-size:13px;color:var(--muted);font-weight:600;}
 .qb{background:white;border:2px solid var(--border);border-radius:24px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.07);position:relative;}
@@ -183,7 +183,7 @@ footer p{font-size:13px;}
   <div class="phc">
     <div class="pht">
       <h1>✖️ الضرب</h1>
-      <p>الضرب هو طريقة سريعة لجمع عدد مكرر عدة مرات. نستخدم علامة ( × ). مثلاً ٣ × ٤ تعني ٣+٣+٣+٣ = ١٢.</p>
+      <p>الضرب هو طريقة سريعة لجمع عدد مكرر عدة مرات. نستخدم علامة ( × ). مثلاً 3 × 4 تعني 3+3+3+3 = 12.</p>
     </div>
   </div>
 </div>
@@ -193,19 +193,17 @@ footer p{font-size:13px;}
     <div class="ii">✖️</div>
     <div>
       <h2>ما هو الضرب؟</h2>
-      <p>الضرب هو طريقة سريعة لجمع عدد مكرر عدة مرات. نستخدم علامة ( × ). مثلاً ٣ × ٤ تعني ٣+٣+٣+٣ = ١٢.</p>
+      <p>الضرب هو طريقة سريعة لجمع عدد مكرر عدة مرات. نستخدم علامة ( × ). مثلاً 3 × 4 تعني 3+3+3+3 = 12.</p>
     </div>
   </div>
 
   <h3 class="sh">أمثلة على الضرب</h3>
   <div class="exg">
-    <div class="ec"><div class="vis">🍫🍫🍫 × ٤</div><div class="eq">3 × 4 = 12</div><div class="lb">ثلاثة صفوف كل صف أربع</div></div>
-    <div class="ec"><div class="vis">⚽⚽⚽⚽⚽ × ٣</div><div class="eq">5 × 3 = 15</div><div class="lb">خمس كرات في ثلاث مجموعات</div></div>
-    <div class="ec"><div class="vis">🌸🌸🌸🌸🌸🌸🌸 × ٢</div><div class="eq">7 × 2 = 14</div><div class="lb">سبع زهور في مجموعتين</div></div>
-    <div class="ec"><div class="vis">🎯🎯🎯🎯🎯🎯🎯🎯🎯 × ٢</div><div class="eq">9 × 2 = 18</div><div class="lb">تسعة في مجموعتين</div></div>
+    <div class="ec"><div class="vis">🍫🍫🍫 × 🍫🍫🍫<br>= <br>🍫🍫🍫<br>🍫🍫🍫<br>🍫🍫🍫</div><div class="eq">3 × 3 = 9</div><div class="lb">ثلاث مجموعات في كل مجموعة ثلاث شوكولاتات المجموع تسع قطع</div></div>
+    <div class="ec"><div class="vis">⚽⚽⚽⚽ × ⚽⚽<br>= <br>⚽⚽⚽⚽<br>⚽⚽⚽⚽</div><div class="eq">4 × 2 = 8</div><div class="lb">أربع كرات في مجموعتين أصبح معنا ثماني كرات</div></div>
   </div>
 
-  <h3 class="sh">جدول الضرب ١ إلى ١٠</h3>
+  <h3 class="sh">جدول الضرب 1 إلى 10</h3>
   <div class="tw"><table class="mt" id="multTable"></table></div>
 
   <h3 class="sh">تمرين تفاعلي 🎮</h3>
@@ -413,7 +411,7 @@ function nextQuestion(){ generate(); }
 function endQuiz(){
   document.getElementById('question').textContent='🏆 انتهت التمارين!';
   document.getElementById('options').innerHTML='';
-  document.getElementById('feedback').textContent='حصلت على '+score+' نقطة من ١٠';
+  document.getElementById('feedback').textContent='حصلت على '+score+' نقطة من 10';
   document.getElementById('feedback').className='qf good';
 
   Voice.speak(`أحسنت! لقد أنهيت التمارين. حصلت على ${Voice.numToAr(score)} نقاط من عشرة.`);
