@@ -15,12 +15,12 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 .logo-text{font-size:20px;font-weight:900;color:#2563EB;line-height:1.15;}
 .logo-text small{color:#EF4444;display:block;font-size:12px;font-weight:700;}
 .nav-links{display:flex;gap:4px;list-style:none;}
-.nav-links a{text-decoration:none;color:#64748B;font-size:15px;font-weight:700;padding:8px 14px;border-radius:12px;transition:all 0.2s;}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:700;padding:8px 14px;border-radius:12px;transition:all 0.2s;}
 .nav-links a:hover,.nav-links a.active{background:#EFF6FF;color:#2563EB;}
 .hero{background:linear-gradient(135deg,#1E40AF,#2563EB);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 30%,rgba(251,191,36,0.2),transparent 50%);}
 .hero h1{font-size:clamp(32px,5vw,56px);font-weight:900;color:white;margin-bottom:10px;position:relative;}
-.hero p{font-size:17px;color:rgba(255,255,255,0.88);max-width:520px;margin:0 auto;position:relative;}
+.hero p{font-weight:600;font-size:17px;color:rgba(255,255,255,0.88);max-width:520px;margin:0 auto;position:relative;}
 .star{position:absolute;animation:twinkle 2.5s ease-in-out infinite;font-size:18px;opacity:0.7;}
 @keyframes twinkle{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.9;transform:scale(1.3)}}
 .container{max-width:980px;margin:0 auto;padding:60px 24px;}
@@ -29,13 +29,14 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 .intro{background:white;border:2px solid #BFDBFE;border-right:6px solid #2563EB;border-radius:20px;padding:32px;margin-bottom:40px;display:flex;gap:20px;align-items:flex-start;box-shadow:0 4px 20px rgba(37,99,235,0.08);}
 .intro-icon{font-size:52px;flex-shrink:0;}
 .intro h2{font-size:22px;font-weight:900;color:#2563EB;margin-bottom:10px;}
-.intro p{font-size:15px;color:#64748B;line-height:1.8;}
+.intro p{font-size:15px;line-height:1.8;font-weight:600}
 .examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:48px;}
 .ex{direction: ltr;background:white;border:2px solid #BFDBFE;border-radius:18px;padding:24px 18px;text-align:center;transition:all 0.25s;}
 .ex:hover{transform:translateY(-4px);border-color:#2563EB;box-shadow:0 12px 32px rgba(37,99,235,0.14);}
 .ex .vis{font-size:18px;line-height:1.9;margin-bottom:10px;overflow:hidden;word-break:break-all;}
 .ex .eq{font-size:28px;font-weight:900;color:#2563EB;margin-bottom:6px;direction:ltr;}
-.ex .lb{font-size:13px;color:#64748B;font-weight:600;}
+.ex .lb{font-size:13px;font-weight:600;}
+@media(min-width:640px){br.res{display:none;} .ex .vis{font-size:25px;}}
 
 /* ── GAME SECTION ── */
 .game-wrap{background:linear-gradient(180deg,#0F172A,#1E3A8A);border-radius:24px;padding:32px;margin-bottom:48px;position:relative;overflow:hidden;}
@@ -48,7 +49,7 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 .lvl-tab{font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:6px 16px;border-radius:10px;border:2px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);cursor:pointer;transition:all 0.2s;}
 .lvl-tab.on{background:#2563EB;border-color:#2563EB;color:white;}
 .q-box{background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:16px;padding:16px 24px;text-align:center;margin-bottom:14px;}
-.q-hint{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:4px;}
+.q-hint{font-weight:600;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:4px;}
 .q-text{font-size:44px;font-weight:900;color:white;direction:ltr;}
 .timer-wrap{height:8px;background:rgba(255,255,255,0.15);border-radius:50px;margin-bottom:14px;overflow:hidden;}
 .timer-bar{height:100%;width:100%;background:linear-gradient(90deg,#10B981,#FBBF24);border-radius:50px;transition:width 0.1s linear;}
@@ -238,8 +239,8 @@ footer p{font-size:13px;}
   <!-- EXAMPLES -->
   <h3 class="sh">أمثلة على الجمع</h3>
   <div class="examples">
-    <div class="ex"><div class="vis">🍎🍎🍎🍎 + 🍎🍎🍎 <br>= <br>🍎🍎🍎🍎<br>🍎🍎🍎</div><div class="eq">4 + 3 = 7</div><div class="lb">أربع تفاحات أضفنا إليها ثلاثاً أصبحت سبع تفاحات</div></div>
-    <div class="ex"><div class="vis">🎈🎈🎈🎈🎈 + 🎈🎈🎈🎈<br>= <br>🎈🎈🎈🎈🎈<br>🎈🎈🎈🎈</div><div class="eq">5 + 4 = 9</div><div class="lb">خمسة بالونات أضفنا أربعة أصبحت تسعة بالونات</div></div>
+    <div class="ex"><div class="vis">🍎🍎🍎🍎 + 🍎🍎🍎 <br>= <br>🍎🍎🍎🍎<br class="res">🍎🍎🍎</div><div class="eq">4 + 3 = 7</div><div class="lb">أربع تفاحات أضفنا إليها ثلاثاً أصبحت سبع تفاحات</div></div>
+    <div class="ex"><div class="vis">🎈🎈🎈🎈🎈 + 🎈🎈🎈🎈<br>= <br>🎈🎈🎈🎈🎈<br class="res">🎈🎈🎈🎈</div><div class="eq">5 + 4 = 9</div><div class="lb">خمسة بالونات أضفنا أربعة أصبحت تسعة بالونات</div></div>
   </div>
 
   <!-- BALLOON GAME -->
@@ -280,12 +281,6 @@ footer p{font-size:13px;}
     <div class="quiz-top">
       <span class="badge">⭐ النقاط: <strong id="Q_score">0</strong></span>
       <span class="badge">السؤال <strong id="Q_num">1</strong> / 10</span>
-      <div class="voice-toggle-wrap">
-        <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="تفعيل/إيقاف الصوت بالعربية">
-          <span class="v-icon">🔇</span>
-          <span class="v-label">الصوت</span>
-        </button>
-      </div>
     </div>
     <div class="quiz-q" id="Q_q">؟ + ؟ = ؟</div>
     <div class="opts" id="Q_opts"></div>
@@ -312,6 +307,7 @@ const Voice = (function(){
   const supported = 'speechSynthesis' in window;
   let enabled = false;
   let speaking = false;
+  let lastText = '';
   const numWords = {
     0:'صفر',1:'واحد',2:'اثنان',3:'ثلاثة',4:'أربعة',5:'خمسة',
     6:'ستة',7:'سبعة',8:'ثمانية',9:'تسعة',10:'عشرة',
@@ -334,6 +330,7 @@ const Voice = (function(){
     return v;
   }
   function speak(text){
+    lastText = text;
     if(!supported||!enabled) return;
     window.speechSynthesis.cancel();
     const utt=new SpeechSynthesisUtterance(text);
@@ -365,10 +362,18 @@ const Voice = (function(){
     speaking=false;
     _updateBtn();
   }
-  return { speak, toggle, numToAr, isEnabled:()=>enabled };
+  return { speak, toggle, numToAr, isEnabled:()=>enabled, enable:function(){ enabled=true; }, reread:function(){ if(lastText) speak(lastText); } };
 })();
 function toggleVoice(){ Voice.toggle(); }
 if('speechSynthesis' in window){ window.speechSynthesis.onvoiceschanged=()=>{}; }
+(function(){
+  var el = document.querySelector('.quiz');
+  if(!el) return;
+  var obs = new IntersectionObserver(function(entries){
+    if(entries[0].intersectionRatio >= 0.4){ Voice.enable(); Voice.reread(); obs.disconnect(); }
+  }, {threshold: 0.4});
+  obs.observe(el);
+})();
 
 /* ================================================================
    LOGO — stored as base64 in sessionStorage or loaded once
