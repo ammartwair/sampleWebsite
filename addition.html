@@ -117,6 +117,8 @@ nav{background:white;border-bottom:3px solid #FBBF24;position:sticky;top:0;z-ind
 .fb.ok{color:#10B981;}.fb.err{color:#EF4444;}
 .next{display:block;width:100%;padding:16px;margin-top:14px;font-family:'Tajawal',sans-serif;font-size:18px;font-weight:900;background:#2563EB;color:white;border:none;border-radius:16px;cursor:pointer;transition:all 0.2s;}
 .next:hover{background:#1D4ED8;}
+.quiz-start-btn{font-family:'Tajawal',sans-serif;font-size:28px;font-weight:900;padding:20px 60px;background:linear-gradient(135deg,#2563EB,#1D4ED8);color:white;border:none;border-radius:20px;cursor:pointer;box-shadow:0 8px 24px rgba(37,99,235,0.35);transition:all 0.2s;}
+.quiz-start-btn:hover{transform:scale(1.06);box-shadow:0 12px 32px rgba(37,99,235,0.5);}
 footer{background:#0F172A;color:rgba(255,255,255,0.65);padding:32px 24px;margin-top:0;}
 .fi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
 .fl{display:flex;align-items:center;gap:10px;}
@@ -278,14 +280,19 @@ footer p{font-size:13px;}
   <!-- QUIZ -->
   <h3 class="sh">تمرين تفاعلي 🎮</h3>
   <div class="quiz">
-    <div class="quiz-top">
-      <span class="badge">⭐ النقاط: <strong id="Q_score">0</strong></span>
-      <span class="badge">السؤال <strong id="Q_num">1</strong> / 10</span>
+    <div id="quiz-start-screen" style="display:flex;align-items:center;justify-content:center;min-height:220px;">
+      <button class="quiz-start-btn" onclick="startQuiz()">ابدأ</button>
     </div>
-    <div class="quiz-q" id="Q_q">؟ + ؟ = ؟</div>
-    <div class="opts" id="Q_opts"></div>
-    <div class="fb" id="Q_fb"></div>
-    <button class="next" id="Q_next" style="display:none" onclick="Q.next()">السؤال التالي ←</button>
+    <div id="quiz-content" style="display:none;">
+      <div class="quiz-top">
+        <span class="badge">⭐ النقاط: <strong id="Q_score">0</strong></span>
+        <span class="badge">السؤال <strong id="Q_num">1</strong> / 10</span>
+      </div>
+      <div class="quiz-q" id="Q_q">؟ + ؟ = ؟</div>
+      <div class="opts" id="Q_opts"></div>
+      <div class="fb" id="Q_fb"></div>
+      <button class="next" id="Q_next" style="display:none" onclick="Q.next()">السؤال التالي ←</button>
+    </div>
   </div>
 
 </div>
@@ -366,14 +373,14 @@ const Voice = (function(){
 })();
 function toggleVoice(){ Voice.toggle(); }
 if('speechSynthesis' in window){ window.speechSynthesis.onvoiceschanged=()=>{}; }
-(function(){
-  var el = document.querySelector('.quiz');
-  if(!el) return;
-  var obs = new IntersectionObserver(function(entries){
-    if(entries[0].intersectionRatio >= 0.4){ Voice.enable(); Voice.reread(); obs.disconnect(); }
-  }, {threshold: 0.4});
-  obs.observe(el);
-})();
+window.addEventListener('pagehide', function(){ window.speechSynthesis.cancel(); });
+window.addEventListener('beforeunload', function(){ window.speechSynthesis.cancel(); });
+function startQuiz(){
+  document.getElementById('quiz-content').style.display='block';
+  document.getElementById('quiz-start-screen').style.display='none';
+  Voice.enable();
+  Q.next();
+}
 
 /* ================================================================
    LOGO — stored as base64 in sessionStorage or loaded once
@@ -720,8 +727,6 @@ var Q = (function() {
       ask();
     };
   }
-
-  ask();
 
   return {
     next: function() { ask(); }
